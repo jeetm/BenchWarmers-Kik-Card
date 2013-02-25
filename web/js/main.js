@@ -1,4 +1,8 @@
-      App.populator('articleList', function (page) {
+App.populator('articleList', function (page) {
+  MyAPI.getArticles(function (meta, articles) {
+    logStuff(articles);
+  });
+        
        /* 
         var articleData = [];
         var articleList = $(page).find(".app-content");
@@ -14,6 +18,72 @@
           articleList.append(tempArticle);
 
 */
+  function logStuff(data) {
+
+
+    console.log(data);
+    for (var i = 0; i < data.length; i++)
+    {
+        var artTitle = data[i]['title'];
+        var artBrief = data[i]['summary'];
+        var artDate = data[i]['pubDate'];
+        var artLink = data[i]['link'];
+        if (data[i]['media:content']) {
+          var imgsrc =  data[i]['media:content']['@']['url'];
+        }
+        else {
+          imgsrc = null;
+        }
+        var section = $('<div />').addClass('app-section');
+
+        var image  = $('<div />').addClass('image');
+        var pic = $('<img />');
+        var description = $('<div />').addClass('description');
+        var title = $('<h4 />');
+        var foobar = $('<div />').html(artBrief);
+        var summary = foobar.find('p').text() || artBrief;
+
+        title.text(artTitle);
+        pic.attr('src', imgsrc);
+        //var story = $('<p />');
+        //var button = $('<div />').addClass('app-button');
+
+        $(page).find('.app-content').append(section);
+        image.append(pic);
+        section.append(image);
+        section.append(description);
+        // description.append(title);
+        // description.append(story);
+        section.append(title);
+        section.append(summary);
+        // story.text(artLink);
+        // button.text('Read More');
+
+  var button1 = $(page).find('#button1').click(function(){
+        App.load('articleView', data[i]);
+      });
+  var button2 = $(page).find('#button2').click(function(){
+        App.load('articleView', articleData[1]);
+      });
+  var button3 = $(page).find('#button3').click(function(){
+        App.load('articleView', articleData[2]);
+      });
+  var button4 = $(page).find('#button4').click(function(){
+        App.load('articleView', articleData[3]);
+      });
+  var button5 = $(page).find('#button5').click(function(){
+        App.load('articleView', articleData[4]);
+      });
+  var button6 = $(page).find('#button6').click(function(){
+        App.load('articleView', articleData[5]);
+      });
+  var button7 = $(page).find('#button7').click(function(){
+        App.load('articleView', articleData[6]);
+      });
+    }
+  }
+});
+/*
 var articleData = [
       {
         title: 'Streaking Grizzlies take bite out of Raptors',
@@ -52,34 +122,12 @@ var articleData = [
       },
       ];
 
-var button1 = $(page).find('#button1').click(function(){
-      App.load('articleView', articleData[0]);
-    });
-var button2 = $(page).find('#button2').click(function(){
-      App.load('articleView', articleData[1]);
-    });
-var button3 = $(page).find('#button3').click(function(){
-      App.load('articleView', articleData[2]);
-    });
-var button4 = $(page).find('#button4').click(function(){
-      App.load('articleView', articleData[3]);
-    });
-var button5 = $(page).find('#button5').click(function(){
-      App.load('articleView', articleData[4]);
-    });
-var button6 = $(page).find('#button6').click(function(){
-      App.load('articleView', articleData[5]);
-    });
-var button7 = $(page).find('#button7').click(function(){
-      App.load('articleView', articleData[6]);
-    });
-        
-        
-      });
+
+*/
 
       App.populator('articleView', function (page, article) {
         // put stuff here
-        $(page).find('#articleTitle').text(article.title.slice(0,16) + "..." );
+        $(page).find('#articleTitle').text(article['artTitle'].slice(0,16) + "..." );
         $(page).find('#desc').html(article.description);
         var backButton = $(page).find('#backButton').on('click', function() {
           App.load('articleList');
