@@ -16,9 +16,18 @@ img {
 }
 
 #story2 {
-	text-align: left;
+	text-align: ;
 }
 
+#nextButton {
+	background-color: #99BFE8;
+	height: 50px;
+	width: 150px;
+	border: none black 2px;
+	border-radius: 10px;
+	margin-right: 55px;
+}
+/*
 .rssincl-head {
 	z-index: 3000;
 	position: relative;
@@ -102,3 +111,4 @@ img {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+*/
