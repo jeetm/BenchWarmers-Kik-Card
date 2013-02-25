@@ -81,6 +81,9 @@ var button7 = $(page).find('#button7').click(function(){
         // put stuff here
         $(page).find('#articleTitle').text(article.title.slice(0,16) + "..." );
         $(page).find('#desc').text(article.description);
+        var backButton = $(page).find('#backButton').on('click', function() {
+          App.load('articleList');
+        });
         var kikbutton = $(page).find('#kik').on('click', function() {
           cards.kik.send({
             title: article.title,
