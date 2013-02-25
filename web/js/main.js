@@ -32,7 +32,7 @@ App.populator('articleList', function (page) {
           var imgsrc =  data[i]['media:content']['@']['url'];
         }
         else {
-          imgsrc = null;
+          imgsrc = "http://www.sportelmonaco.com/sportel/resources/partners/nba_medium.jpg";
         }
         var section = $('<div />').addClass('app-section');
 
@@ -43,21 +43,25 @@ App.populator('articleList', function (page) {
         var foobar = $('<div />').html(artBrief);
         var summary = foobar.find('p').text() || artBrief;
 
+        summary = summary.slice(0,175) + "...";
+
         title.text(artTitle);
         pic.attr('src', imgsrc);
-        //var story = $('<p />');
-        //var button = $('<div />').addClass('app-button');
+        var story = $('<p />');
+        var button = $('<div />').addClass('app-button');
 
         $(page).find('.app-content').append(section);
-        image.append(pic);
         section.append(image);
+        image.append(pic);
         section.append(description);
+        description.append(title);
+        description.append(summary);
+        //button.append(section);
         // description.append(title);
         // description.append(story);
-        section.append(title);
-        section.append(summary);
+
         // story.text(artLink);
-        // button.text('Read More');
+        //button.text('Read More');
 
   var button1 = $(page).find('#button1').click(function(){
         App.load('articleView', data[i]);
