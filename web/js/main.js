@@ -12,44 +12,41 @@ App.populator('articleList', function (page) {
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
+        var imgLink = item['media:content']['@']['url'];
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
         var title = $('<h4 />');
         var summary = $('<div />').html(artSum);
         var button = $('<div />').addClass('app-button');
+        var kikbutton = $('<div />').addClass('app-button');
 
         $(page).find('.app-content').append(section);
         section.append(description);
         section.append(button);
+        section.append(kikbutton);
         description.append(title);
         description.append(summary);
         
         title.text(artTitle);
         button.text('Read More');
+        kikbutton.text('Kik');
 
         button.on('click', function() {
           window.location = artLink;
         });
-    });
-  }
-});
 
-
-      App.populator('articleView', function (page, title, link) {
-        // put stuff here
-        var backButton = $(page).find('#backButton').on('click', function() {
-          App.load('articleList');
-        });
-        var kikbutton = $(page).find('#kik').on('click', function() {
+        kikbutton.on('click', function() {
           cards.kik.send({
-            title: article.title,
-            text: article.brief,
+            title: artTitle,
+            text: 'Check out what I found!',
+            pic: imgLink,
             big: false,
           });
         });
-      });
-
+    });
+  }
+});
       try {
         App.restore();
       }
