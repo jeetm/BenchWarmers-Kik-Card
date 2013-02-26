@@ -10,20 +10,23 @@
   </head>
 
   <body>
-    <div class="app-page" data-page="articleList">
+    <div class="app-page articleList" data-page="articleList">
       <div class="app-topbar">
         <div class="app-title">BenchWarmers</div>
       </div>
       <div class="app-content"></div>
     </div>
 
-    <div class="app-page" data-page="articleView">
+    <div class="app-page articleView" data-page="articleView">
       <div class="app-topbar">
         <div class="app-title" id = "articleTitle"></div>
         <div class = "app-button right" id = "kikBut"></div>
         <div class = "app-button left" data-back id = "backBut"></div>
       </div>
-      <div class="app-content" id = "articleContent"></div>
+      <div class="app-content" id = "articleContent">
+        <div id = "artImage"></div>
+        <div id = "artBrief"></div>
+      </div>
     </div>
 
     <script src="http://zeptojs.com/zepto.min.js"></script>

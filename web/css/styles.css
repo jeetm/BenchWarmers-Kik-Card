@@ -1,6 +1,6 @@
-img {
+.articleList .app-content img {
 	float:left;
-	margin-top: 10px;
+	margin-top: 0px;
 	margin-right: 10px;
 	margin-left: 10px;
 	border-radius: 10px;
@@ -46,6 +46,20 @@ img {
 	color: transparent;
 }
 
+#artBrief {
+	clear: both;
+	margin-left: 10px;
+}
+#artImage {
+	text-align: center;
+}
+#artImage img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 200px;
+	height: 100px;
+	border-radius: 10px;
+}
 /*
 .rssincl-head {
 	z-index: 3000;

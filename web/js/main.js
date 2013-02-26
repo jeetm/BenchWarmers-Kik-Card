@@ -57,7 +57,7 @@ App.populator('articleView', function(page, linkData) {
   $(page).find('#backBut').text('Back');
 
   $(page).find('#backBut').clickable().on('click', function() {
-    App.load('articleList');
+    App.load('articleList', 'slide-left');
   });
 
   $(page).find('#kikBut').clickable().on('click', function() {
@@ -72,16 +72,18 @@ App.populator('articleView', function(page, linkData) {
       linkData: x
     });
   });
+
   var brief = $('<div />').html(linkData['description']);
   var summary = brief.text();
-
-  $(page).find('#articleContent').text(summary);
+  var imagesrc = brief.find('img').attr('src');
+  var image = $('<img />').attr('src', imagesrc);
+  $(page).find('#artImage').html(image);
+  $(page).find('#artBrief').text(summary);
 });
 
-   if (cards.browser && cards.browser.linkData) {
-     // Card was launched by a conversation
-     App.load('articleView', cards.browser.linkData);
-   }
-   else {
-     App.load('articleList');
-   }
+if (cards.browser && cards.browser.linkData) {
+  App.load('articleView', cards.browser.linkData);
+}
+else {
+  App.load('articleList');
+}
