@@ -55,24 +55,33 @@ App.populator('articleView', function(page, linkData) {
   $(page).find('#articleTitle').text(linkData['title'].slice(0,16) + "...");
   $(page).find('#kikBut').text('Kik');
   $(page).find('#backBut').text('Back');
-  $(page).find('#backBut').on('click', function() {
+
+  $(page).find('#backBut').clickable().on('click', function() {
     App.load('articleList');
   });
-  $(page).find('#articleContent').text(linkData['description'])
+
+  $(page).find('#kikBut').clickable().on('click', function() {
+    var imgLink = linkData['media:content']['@']['url'];
+    var artTitle = linkData['title'];
+    var x = JSON.stringify(linkData);
+    cards.kik.send({
+      title: artTitle,
+      text: 'Check out what I found!',
+      pic: imgLink,
+      big: false,
+      linkData: x
+    });
+  });
+  var brief = $('<div />').html(linkData['description']);
+  var summary = brief.text();
+
+  $(page).find('#articleContent').text(summary);
 });
 
    if (cards.browser && cards.browser.linkData) {
      // Card was launched by a conversation
      App.load('articleView', cards.browser.linkData);
-     //cards.kik.returnToConversation(); // return to conversation
    }
    else {
      App.load('articleList');
    }
-   /*
-      try {
-        App.restore();
-      }
-      catch (err) {
-        App.load('articleList');
-      }*/
