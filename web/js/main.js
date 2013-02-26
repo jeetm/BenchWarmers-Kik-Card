@@ -32,11 +32,11 @@ App.populator('articleList', function (page) {
         button.text('Read More');
         kikbutton.text('Kik');
 
-        button.on('click', function() {
-          window.location = artLink;
+        button.clickable().on('click', function() {
+          cards.browser.open(artLink);
         });
 
-        kikbutton.on('click', function() {
+        kikbutton.clickable().on('click', function() {
           cards.kik.send({
             title: artTitle,
             text: 'Check out what I found!',
