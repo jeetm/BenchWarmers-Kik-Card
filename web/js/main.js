@@ -2,22 +2,7 @@ App.populator('articleList', function (page) {
   MyAPI.getArticles(function (meta, articles) {
     logStuff(articles);
   });
-        
-       /* 
-        var articleData = [];
-        var articleList = $(page).find(".app-content");
-        var articleTemplate = $(page).find("#articleTemplate").remove();
 
-        articleData.forEach(function(article){
-
-
-          var tempArticle = articleTemplate.clone();
-
-          tempArticle.find(".title").text("");
-
-          articleList.append(tempArticle);
-
-*/
   function logStuff(data) {
 
 
@@ -25,47 +10,23 @@ App.populator('articleList', function (page) {
     for (var i = 0; i < data.length; i++)
     {
         var artTitle = data[i]['title'];
-        var artBrief = data[i]['summary'];
+        var artSum = data[i]['summary'];
         var artDate = data[i]['pubDate'];
         var artLink = data[i]['link'];
-        var section = $('<div />').addClass('app-section');
 
+        var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
         var title = $('<h4 />');
-        var summary = $('<div />').html(artBrief);
-
-
-        title.text(artTitle);
-        // var button = $('<div />').addClass('app-button');
+        var summary = $('<div />').html(artSum);
+        var button = $('<div />').addClass('app-button');
 
         $(page).find('.app-content').append(section);
         section.append(description);
         description.append(title);
         description.append(summary);
-        //button.append(section);
-        //button.text('Read More');
-
-  var button1 = $(page).find('#button1').click(function(){
-        App.load('articleView', data[i]);
-      });
-  var button2 = $(page).find('#button2').click(function(){
-        App.load('articleView', articleData[1]);
-      });
-  var button3 = $(page).find('#button3').click(function(){
-        App.load('articleView', articleData[2]);
-      });
-  var button4 = $(page).find('#button4').click(function(){
-        App.load('articleView', articleData[3]);
-      });
-  var button5 = $(page).find('#button5').click(function(){
-        App.load('articleView', articleData[4]);
-      });
-  var button6 = $(page).find('#button6').click(function(){
-        App.load('articleView', articleData[5]);
-      });
-  var button7 = $(page).find('#button7').click(function(){
-        App.load('articleView', articleData[6]);
-      });
+        section.append(button);
+        title.text(artTitle);
+        button.text('Read More');
     }
   }
 });
