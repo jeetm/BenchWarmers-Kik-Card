@@ -28,39 +28,21 @@ App.populator('articleList', function (page) {
         var artBrief = data[i]['summary'];
         var artDate = data[i]['pubDate'];
         var artLink = data[i]['link'];
-        if (data[i]['media:content']) {
-          var imgsrc =  data[i]['media:content']['@']['url'];
-        }
-        else {
-          imgsrc = "http://www.sportelmonaco.com/sportel/resources/partners/nba_medium.jpg";
-        }
         var section = $('<div />').addClass('app-section');
 
-        var image  = $('<div />').addClass('image');
-        var pic = $('<img />');
         var description = $('<div />').addClass('description');
         var title = $('<h4 />');
-        var foobar = $('<div />').html(artBrief);
-        var summary = foobar.find('p').text() || artBrief;
+        var summary = $('<div />').html(artBrief);
 
-        summary = summary.slice(0,175) + "...";
 
         title.text(artTitle);
-        pic.attr('src', imgsrc);
-        var story = $('<p />');
-        var button = $('<div />').addClass('app-button');
+        // var button = $('<div />').addClass('app-button');
 
         $(page).find('.app-content').append(section);
-        section.append(image);
-        image.append(pic);
         section.append(description);
         description.append(title);
         description.append(summary);
         //button.append(section);
-        // description.append(title);
-        // description.append(story);
-
-        // story.text(artLink);
         //button.text('Read More');
 
   var button1 = $(page).find('#button1').click(function(){
