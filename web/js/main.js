@@ -50,6 +50,9 @@ App.populator('articleList', function (page) {
         });
     });
   }
+
+  var selectedBut = $(page).find('.selected-category').clickable();
+  var otherBut = $(page).find('.other-category').clickable();
 });
 
 App.populator('articleView', function(page, linkData) {
