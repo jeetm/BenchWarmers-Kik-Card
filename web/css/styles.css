@@ -78,7 +78,7 @@
 	font-style: bold;
 }
 
-.category .app-button {
+.category-choices .app-button {
 	display: inline-block;
 	border: 1px solid #D1D1D1;
 	border-radius: 3px;
@@ -88,6 +88,10 @@
 	margin-left: 0px;
 	margin-bottom: 1px;
 	margin-top: 3px;
+}
+
+.app-content .selected-button {
+	background-color: #969696;
 }
 
 #nba {

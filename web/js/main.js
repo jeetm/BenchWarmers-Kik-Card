@@ -51,8 +51,23 @@ App.populator('articleList', function (page) {
     });
   }
 
-  var selectedBut = $(page).find('.selected-category').clickable();
-  var otherBut = $(page).find('.other-category').clickable();
+  var nbaBut = $(page).find('#nba').clickable();
+  var nflBut = $(page).find('#nfl').clickable();
+  var mlbBut = $(page).find('#mlb').clickable();
+  var nhlBut = $(page).find('#nhl').clickable();
+  var buttons = $(page).find('.category-button');
+  var selectedButton = $(page).find('.selected-button');
+
+  buttons.on('click', function() {
+    var clickedButton = $(page).find('#' + $(this).attr('id'));
+      console.log(clickedButton.attr('id'));
+      selectedButton.removeClass('selected-button');
+      selectedButton.addClass('other-buttons');
+      clickedButton.addClass('selected-button');
+      selectedButton = clickedButton;
+      nbaBut.addClass('other-buttons');
+  });
+
 });
 
 App.populator('articleView', function(page, linkData) {
