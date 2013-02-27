@@ -8,6 +8,7 @@ App.populator('articleList', function (page) {
 
     console.log(data);
     data.forEach(function (item) {
+
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -52,12 +53,13 @@ App.populator('articleList', function (page) {
 });
 
 App.populator('articleView', function(page, linkData) {
+
   $(page).find('#articleTitle').text(linkData['title'].slice(0,14) + "...");
   $(page).find('#kikBut').text('Kik');
   $(page).find('#backBut').text('Back');
 
   $(page).find('#backBut').clickable().on('click', function() {
-    App.load('articleList', 'slide-left');
+    App.load('articleList', 'slide-right');
   });
 
   $(page).find('#kikBut').clickable().on('click', function() {
@@ -90,3 +92,4 @@ if (cards.browser && cards.browser.linkData) {
 else {
   App.load('articleList');
 }
+//Ideas: Setting max number of stories and dealing with old content messages, categorizing by sport

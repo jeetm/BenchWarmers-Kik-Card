@@ -52,9 +52,11 @@
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
+
 #artImage {
 	text-align: center;
 }
+
 #artImage img {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -66,4 +68,9 @@
 #readMore {
 	width: 200px;
 	border-radius: 10px;
+}
+
+.app-topbar title {
+	font-style: bold;
+	
 }
