@@ -5,6 +5,7 @@
 	margin-left: 10px;
 	border-radius: 10px;
 }
+
 #desc {
 	font-size: 14px;
 	text-indent: 1.5em;
@@ -49,6 +50,7 @@
 #artBrief {
 	clear: both;
 	margin-left: 10px;
+	margin-bottom: 10px;
 }
 #artImage {
 	text-align: center;
@@ -60,88 +62,8 @@
 	height: 100px;
 	border-radius: 10px;
 }
-/*
-.rssincl-head {
-	z-index: 3000;
-	position: relative;
-	height: 44px;
-	width: 100%;
-	background: #000;
-	color: #FFF;
-	background: #222;
-	color: #DDD;
-	font-weight: bold;
-}
 
-.app-android .rssincl-head {
-	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #2B2B2B,
-		inset 0 -2px 0 #1B1B1B;
-	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #2B2B2B,
-		inset 0 -2px 0 #1B1B1B;
-	box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #2B2B2B,
-		inset 0 -2px 0 #1B1B1B;
+#readMore {
+	width: 200px;
+	border-radius: 10px;
 }
-.app-ios .rssincl-head {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#525252), to(#1F1E1F));
-	background-image: -webkit-linear-gradient(#525252, #1F1E1F);
-	background-image: -moz-linear-gradient(#525252, #1F1E1F);
-	background-image: -ms-linear-gradient(#525252, #1F1E1F);
-	background-image: -o-linear-gradient(#525252, #1F1E1F);
-	background-image: linear-gradient(#525252, #1F1E1F);
-	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #797979,
-		inset 0 -1px 0 #333;
-	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #797979,
-		inset 0 -1px 0 #333;
-	box-shadow: 0px 0px 5px rgba(0,0,0,0.5),
-		inset 0 1px 0 #797979,
-		inset 0 -1px 0 #333;
-	color: #EEE;
-	text-shadow: 0px -1px 0 #1D1E1E;
-
-.rssincl-title {
-	font-size: 20px;
-}
-
-.rssincl-content {
-	z-index: 2000;
-	position: relative;
-	background: #FFF;
-}
-
-.rssincl-entry {
-	background: #FFF;
-	border: none;
-	border-bottom: 1px solid #DDD;
-	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1);
-	-moz-box-shadow: 0 0 3px rgba(0,0,0,0.1);
-	box-shadow: 0 0 3px rgba(0,0,0,0.1);
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	overflow: hidden;
-	position: relative;
-	margin: 8px;
-	border: 1px solid #AAA;
-}
-
-.rssincl-entry > :first-child {
-	-webkit-border-radius: 3px 3px 0 0;
-	-moz-border-radius: 3px 3px 0 0;
-	border-radius: 3px 3px 0 0;
-}
-.rssincl-entry > :last-child {
-	-webkit-border-radius: 0 0 3px 3px;
-	-moz-border-radius: 0 0 3px 3px;
-	border-radius: 0 0 3px 3px;
-}
-.rssincl-entry > :only-child {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-*/

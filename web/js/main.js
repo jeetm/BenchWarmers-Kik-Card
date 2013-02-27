@@ -52,7 +52,7 @@ App.populator('articleList', function (page) {
 });
 
 App.populator('articleView', function(page, linkData) {
-  $(page).find('#articleTitle').text(linkData['title'].slice(0,16) + "...");
+  $(page).find('#articleTitle').text(linkData['title'].slice(0,14) + "...");
   $(page).find('#kikBut').text('Kik');
   $(page).find('#backBut').text('Back');
 
@@ -79,6 +79,9 @@ App.populator('articleView', function(page, linkData) {
   var image = $('<img />').attr('src', imagesrc);
   $(page).find('#artImage').html(image);
   $(page).find('#artBrief').text(summary);
+  $(page).find('#readMore').text('Read More').on('click', function() {
+    cards.browser.open(linkData['link']);
+  });
 });
 
 if (cards.browser && cards.browser.linkData) {
