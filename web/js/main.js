@@ -5,7 +5,6 @@ App.populator('articleListnba', function (page) {
 
   function logStuff(data) {
 
-
     console.log(data);
     data.forEach(function (item) {
 
@@ -73,12 +72,12 @@ App.populator('articleListnba', function (page) {
 });
 
 App.populator('articleListnfl', function(page, clickedButton) {
-  MyAPI.getArticles(function (meta, articles) {
+  MyAPI.getInfo(function (meta, articles) {
     loadPage(articles);
 
     function loadPage(data) {
         console.log(data);
-        /*
+      
     data.forEach(function (item) {
 
         var artTitle = item['title'];
@@ -121,10 +120,115 @@ App.populator('articleListnfl', function(page, clickedButton) {
           });
         });
     });
-*/
   }
   });
+});
 
+
+App.populator('articleListmlb', function(page, clickedButton) {
+  MyAPI.getData(function (meta, articles) {
+    loadInfo(articles);
+
+    function loadInfo(data) {
+        console.log(data);
+      
+    data.forEach(function (item) {
+
+        var artTitle = item['title'];
+        var artSum = item['summary'];
+        var artDate = item['pubDate'];
+        var artLink = item['link'];
+        var imgLink = item['media:content']['@']['url'];
+
+        var section = $('<div />').addClass('app-section');
+        var description = $('<div />').addClass('description');
+        var title = $('<h4 />');
+        var summary = $('<div />').html(artSum);
+        var button = $('<div />').addClass('app-button myButtons');
+        var kikbutton = $('<div />').addClass('app-button myButtons');
+
+        $(page).find('.app-content').append(section);
+        section.append(description);
+        section.append(button);
+        section.append(kikbutton);
+        description.append(title);
+        description.append(summary);
+        
+        title.text(artTitle);
+        button.text('Read More');
+        kikbutton.text('Kik');
+
+        button.clickable().on('click', function() {
+          cards.browser.open(artLink);
+        });
+
+        kikbutton.clickable().on('click', function() {
+          var x = JSON.stringify(item);
+          console.log(x);
+          cards.kik.send({
+            title: artTitle,
+            text: 'Check out what I found!',
+            pic: imgLink,
+            big: false,
+            linkData: x
+          });
+        });
+    });
+  }
+  });
+});
+
+App.populator('articleListnhl', function(page, clickedButton) {
+  MyAPI.getNhl(function (meta, articles) {
+    init(articles);
+
+    function init(data) {
+        console.log(data);
+      
+    data.forEach(function (item) {
+
+        var artTitle = item['title'];
+        var artSum = item['summary'];
+        var artDate = item['pubDate'];
+        var artLink = item['link'];
+        var imgLink = item['media:content']['@']['url'];
+
+        var section = $('<div />').addClass('app-section');
+        var description = $('<div />').addClass('description');
+        var title = $('<h4 />');
+        var summary = $('<div />').html(artSum);
+        var button = $('<div />').addClass('app-button myButtons');
+        var kikbutton = $('<div />').addClass('app-button myButtons');
+
+        $(page).find('.app-content').append(section);
+        section.append(description);
+        section.append(button);
+        section.append(kikbutton);
+        description.append(title);
+        description.append(summary);
+        
+        title.text(artTitle);
+        button.text('Read More');
+        kikbutton.text('Kik');
+
+        button.clickable().on('click', function() {
+          cards.browser.open(artLink);
+        });
+
+        kikbutton.clickable().on('click', function() {
+          var x = JSON.stringify(item);
+          console.log(x);
+          cards.kik.send({
+            title: artTitle,
+            text: 'Check out what I found!',
+            pic: imgLink,
+            big: false,
+            linkData: x
+          });
+        });
+    });
+  }
+  });
 });
 
 App.populator('articleView', function(page, linkData) {
@@ -167,4 +271,4 @@ if (cards.browser && cards.browser.linkData) {
 else {
   App.load('articleListnba');
 }
-//Ideas: Setting max number of stories and dealing with old content messages, categorizing by sport
+//Ideas: Setting max number of stories and dealing with old content messages, categorizing by sport, displaying time/date of article/source, styling
