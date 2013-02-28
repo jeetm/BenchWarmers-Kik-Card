@@ -261,6 +261,7 @@ App.populator('articleList', function (page, feed) {
 
         kikbutton.clickable().on('click', function() {
           var x = JSON.stringify(passingData3);
+
           cards.kik.send({
             title: artTitle,
             text: 'Check out what I found!',
@@ -274,7 +275,6 @@ App.populator('articleList', function (page, feed) {
       sportList.css('height','100%');
 
       sportList.scrollable();
-
       });
   }
 
