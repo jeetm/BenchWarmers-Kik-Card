@@ -197,7 +197,7 @@ App.populator('articleList', function (page, feed) {
         button.text('Read More');
         kikbutton.text('Kik');
 
-        var passingData2 = {'object': item, 'list': 'nba'};
+        var passingData2 = {'object': item, 'list': 'mlb'};
         var object = passingData2['object'];
         var list = passingData2['list'];
 
@@ -251,7 +251,7 @@ App.populator('articleList', function (page, feed) {
         button.text('Read More');
         kikbutton.text('Kik');
 
-        var passingData3 = {'object': item, 'list': 'nba'};
+        var passingData3 = {'object': item, 'list': 'nhl'};
         var object = passingData3['object'];
         var list = passingData3['list'];
 

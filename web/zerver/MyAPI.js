@@ -15,3 +15,4 @@ exports.getMLB = function (callback) {
 exports.getNhl = function (callback) {
 	feedparser.parseUrl('http://www.sportsnet.ca/hockey/index-pics-ontario.xml').on('complete', callback);
 };
+

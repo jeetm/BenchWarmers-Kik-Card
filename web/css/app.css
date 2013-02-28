@@ -32,8 +32,6 @@ body {
 	clear: both;
 }
 
-
-
 /* Page */
 
 .app-clickblocker {
@@ -170,14 +168,12 @@ body {
 	margin-top: -1px;
 }
 
-
-
 /* Buttons */
 
 .app-content .app-button {
 	margin: 0 auto;
 	height: 40px;
-	border-bottom: 1px solid #AAA;
+	/*border-bottom: 1px solid #AAA;*/
 	line-height: 40px;
 	overflow: hidden;
 	text-align: center;
