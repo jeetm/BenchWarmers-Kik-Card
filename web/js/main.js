@@ -13,6 +13,10 @@ App.populator('articleList', function (page, feed) {
     feedNum = 2;
   }
 
+  else if (feed['list'] === 'nhl') {
+    feedNum = 3;
+  }
+
   else {
     feedNum = 0;
   }
@@ -23,7 +27,7 @@ App.populator('articleList', function (page, feed) {
 
   var slideviewer = new SlideViewer(wrapper, source, {
     startAt: feedNum,
-    length: 3,
+    length: 4,
   });
 
   page.addEventListener('appLayout', function() {
@@ -46,6 +50,12 @@ App.populator('articleList', function (page, feed) {
     else if(i === 2) {
       MyAPI.getMLB(function (meta,articles) {
         populateMLBList(articles, list);
+      });
+    }
+
+    else if(i === 3) {
+      MyAPI.getNhl(function (meta,articles) {
+        populateNHLList(articles, list);
       });
     }
 
@@ -188,8 +198,8 @@ App.populator('articleList', function (page, feed) {
         kikbutton.text('Kik');
 
         var passingData2 = {'object': item, 'list': 'nba'};
-        var object = passingData1['object'];
-        var list = passingData1['list'];
+        var object = passingData2['object'];
+        var list = passingData2['list'];
 
         button.clickable().on('click', function() {
           cards.browser.open(artLink);
@@ -213,6 +223,61 @@ App.populator('articleList', function (page, feed) {
 
       });
   }
+  function populateNHLList(data, sportList) {
+
+    data.forEach(function (item) {
+
+        var artTitle = item['title'];
+        var artSum = item['summary'];
+        var artDate = item['pubDate'];
+        var artLink = item['link'];
+        var imgLink = item['media:content']['@']['url'];
+
+        var section = $('<div />').addClass('app-section');
+        var description = $('<div />').addClass('description');
+        var title = $('<h4 />');
+        var summary = $('<div />').html(artSum);
+        var button = $('<div />').addClass('app-button myButtons');
+        var kikbutton = $('<div />').addClass('app-button myButtons');
+
+        sportList.append(section);
+        section.append(description);
+        section.append(button);
+        section.append(kikbutton);
+        description.append(title);
+        description.append(summary);
+        
+        title.text(artTitle);
+        button.text('Read More');
+        kikbutton.text('Kik');
+
+        var passingData3 = {'object': item, 'list': 'nba'};
+        var object = passingData3['object'];
+        var list = passingData3['list'];
+
+        button.clickable().on('click', function() {
+          cards.browser.open(artLink);
+        });
+
+        kikbutton.clickable().on('click', function() {
+          var x = JSON.stringify(passingData3);
+          cards.kik.send({
+            title: artTitle,
+            text: 'Check out what I found!',
+            pic: imgLink,
+            big: false,
+            linkData: x
+          });
+
+        });
+
+      sportList.css('height','100%');
+
+      sportList.scrollable();
+
+      });
+  }
+
 
   slideviewer.on('flip', changeMainTitle);
 
@@ -226,6 +291,9 @@ App.populator('articleList', function (page, feed) {
     }
     else if(slideNum == 2) {
       $(page).find('#sportTitle').text('BenchWarmers: MLB');
+    }
+    else if(slideNum == 3) {
+      $(page).find('#sportTitle').text('BenchWarmers: NHL');
     }
   }
 });
