@@ -126,8 +126,10 @@ App.populator('articleListnfl', function(page, clickedButton) {
 
 
 App.populator('articleListmlb', function(page, clickedButton) {
-  MyAPI.getData(function (meta, articles) {
+  
+  MyAPI.getInfo2(function (meta, articles){
     loadInfo(articles);
+  
 
     function loadInfo(data) {
         console.log(data);
@@ -175,7 +177,8 @@ App.populator('articleListmlb', function(page, clickedButton) {
         });
     });
   }
-  });
+});
+  
 });
 
 App.populator('articleListnhl', function(page, clickedButton) {

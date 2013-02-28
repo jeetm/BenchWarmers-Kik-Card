@@ -8,7 +8,7 @@ exports.getInfo = function (callback) {
 	feedparser.parseUrl('http://www.sportsnet.ca/football/nfl/index-pics-ontario.xml').on('complete', callback);
 };
 
-exports.getData = function (callback) {
+exports.getInfo2 = function (callback) {
 	feedparser.parseUrl('http://www.sportsnet.ca/baseball/index-pics-ontario.xml').on('complete', callback);
 };
 
