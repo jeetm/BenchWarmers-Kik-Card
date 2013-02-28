@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+
+      <title>BenchWarmers</title>
+      <link rel="kik-icon" href="img/icon.jpg">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <link type = "text/css" rel="stylesheet" href="css/default.css">
+      <link type = "text/css" rel = "stylesheet" href = "css/app.css">
+      <link type = "text/css" rel="stylesheet" href="css/styles.css">
+
+    </head>
+
+    <body>
+      <div class="app-page articleList" data-page="articleList">
+        <div class="app-topbar">
+          <div class="app-title" id = "sportTitle">BenchWarmers</div>
+        </div>
+        <div class="app-content" data-no-scroll = "true" id = "artList">
+          <div class = "wrapper"></div>
+        </div>
+      </div>
+
+      <div class="app-page articleView" data-page="articleView">
+        <div class="app-topbar">
+          <div class="app-title" id = "articleTitle"></div>
+          <div class = "app-button right" id = "kikBut"></div>
+          <div class = "app-button left" data-back id = "backBut"></div>
+        </div>
+        <div class="app-content" id = "articleContent">
+          <div id = "artImage"></div>
+          <div id = "artBrief"></div>
+          <div class = "app-button blue" id = "readMore"></div>
+        </div>
+      </div>
+
+      <script src="http://zeptojs.com/zepto.min.js"></script>
+      <script src="http://cdn.kik.com/app/1/app.js"></script>
+      <script src="http://cdn.kik.com/cards/0/cards.js"></script>
+      <script src = "zerver/MyAPI.js"></script>
+      <script src="js/slide-viewer.js"></script>
+      <script src="js/dispatcher.js"></script>
+      <script type = "text/javascript" src = "js/main.js"></script>
+    </body>
+  </html>
