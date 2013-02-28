@@ -32,8 +32,6 @@ body {
 	clear: both;
 }
 
-
-
 /* Page */
 
 .app-clickblocker {
@@ -169,8 +167,6 @@ body {
 .app-list > li + label {
 	margin-top: -1px;
 }
-
-
 
 /* Buttons */
 
