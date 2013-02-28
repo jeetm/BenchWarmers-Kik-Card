@@ -197,7 +197,11 @@ App.populator('articleList', function (page, feed) {
         button.text('Read More');
         kikbutton.text('Kik');
 
+<<<<<<< HEAD
         var passingData2 = {'object': item, 'list': 'mlb'};
+=======
+        var passingData2 = {'object': item, 'list': 'nba'};
+>>>>>>> 4cbc7f865f81fd081b4cfda64eee8533cfaabdd2
         var object = passingData2['object'];
         var list = passingData2['list'];
 
