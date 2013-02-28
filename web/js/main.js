@@ -340,4 +340,4 @@ if (cards.browser && cards.browser.linkData) {
 else {
   App.load('articleList', 'nba');
 }
-//Ideas: Setting max number of stories and dealing with old content messages, categorizing by sport, displaying time/date of article/source, styling
+//Ideas: Setting max number of stories and dealing with old content messages, displaying time/date of article/source, styling
