@@ -1,70 +1,26 @@
 <!DOCTYPE html>
   <html>
     <head>
+
       <title>BenchWarmers</title>
       <link rel="kik-icon" href="img/icon.jpg">
-      <link type = "text/css" rel = "stylesheet" href = "css/app.css">
-      <link type = "text/css" rel="stylesheet" href="css/default.css">
-      <link type = "text/css" rel="stylesheet" href="css/styles.css">
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <link type = "text/css" rel="stylesheet" href="css/default.css">
+      <link type = "text/css" rel = "stylesheet" href = "css/app.css">
+      <link type = "text/css" rel="stylesheet" href="css/styles.css">
+
     </head>
 
     <body>
-      <div class="app-page articleListnba" data-page="articleListnba">
+      <div class="app-page articleList" data-page="articleList">
         <div class="app-topbar">
-          <div class="app-title">BenchWarmers</div>
+          <div class="app-title" id = "sportTitle">BenchWarmers</div>
         </div>
-        <div class="app-content">
-          <div class = "category-choices" id = "category-buttons">
-            <div class = "category-button selected-button app-button" id = "nba">NBA</div>
-            <div class = "category-button other-buttons app-button" id = "nfl">NFL</div>
-            <div class = "category-button other-buttons app-button" id = "mlb">MLB</div>
-            <div class = "category-button other-buttons app-button" id = "nhl">NHL</div>
-          </div>
-      </div>
-    </div>
-
-      <div class="app-page articleListnfl" data-page="articleListnfl">
-        <div class="app-topbar">
-          <div class="app-title">BenchWarmers</div>
+        <div class="app-content" data-no-scroll = "true" id = "artList">
+          <div class = "wrapper"></div>
         </div>
-        <div class="app-content">
-          <div class = "category-choices" id = "category-buttons">
-            <div class = "category-button other-buttons app-button" id = "nba">NBA</div>
-            <div class = "category-button selected-button app-button" id = "nfl">NFL</div>
-            <div class = "category-button other-buttons app-button" id = "mlb">MLB</div>
-            <div class = "category-button other-buttons app-button" id = "nhl">NHL</div>
-          </div>
       </div>
-    </div>
-
-      <div class="app-page articleListmlb" data-page="articleListmlb">
-        <div class="app-topbar">
-          <div class="app-title">BenchWarmers</div>
-        </div>
-        <div class="app-content">
-          <div class = "category-choices" id = "category-buttons">
-            <div class = "category-button other-buttons app-button" id = "nba">NBA</div>
-            <div class = "category-button selected-button app-button" id = "nfl">NFL</div>
-            <div class = "category-button other-buttons app-button" id = "mlb">MLB</div>
-            <div class = "category-button other-buttons app-button" id = "nhl">NHL</div>
-          </div>
-      </div>
-      <div>
-
-      <div class="app-page articleListnhl" data-page="articleListnhl">
-        <div class="app-topbar">
-          <div class="app-title">BenchWarmers</div>
-        </div>
-        <div class="app-content">
-          <div class = "category-choices" id = "category-buttons">
-            <div class = "category-button other-buttons app-button" id = "nba">NBA</div>
-            <div class = "category-button selected-button app-button" id = "nfl">NFL</div>
-            <div class = "category-button other-buttons app-button" id = "mlb">MLB</div>
-            <div class = "category-button other-buttons app-button" id = "nhl">NHL</div>
-          </div>
-      </div>
-    </div>
 
       <div class="app-page articleView" data-page="articleView">
         <div class="app-topbar">
@@ -83,6 +39,8 @@
       <script src="http://cdn.kik.com/app/1/app.js"></script>
       <script src="http://cdn.kik.com/cards/0/cards.js"></script>
       <script src = "zerver/MyAPI.js"></script>
+      <script src="js/slide-viewer.js"></script>
+      <script src="js/dispatcher.js"></script>
       <script type = "text/javascript" src = "js/main.js"></script>
     </body>
   </html>
