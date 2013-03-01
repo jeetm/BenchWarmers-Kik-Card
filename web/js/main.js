@@ -17,10 +17,6 @@ App.populator('articleList', function (page, feed) {
     feedNum = 3;
   }
 
-  else if (feed['list'] === 'blank') {
-    feedNum = 4;
-  }
-
   else {
     feedNum = 0;
   }
@@ -31,12 +27,19 @@ App.populator('articleList', function (page, feed) {
 
   var slideviewer = new SlideViewer(wrapper, source, {
     startAt: feedNum,
-    length: 5,
+    length: 4,
   });
 
   page.addEventListener('appLayout', function() {
     slideviewer.refreshSize();
   });
+
+  if(App.platform == 'android') {
+    slideviewer.disable3d();
+    slideviewer.on('move', function() {
+      slideviewer.enable3d();
+    });
+  }
 
   function source(i) {
     var list = $('<div />');
@@ -61,10 +64,6 @@ App.populator('articleList', function (page, feed) {
       MyAPI.getNhl(function (meta,articles) {
         populateNHLList(articles, list);
       });
-    }
-
-    else if(i === 4) {
-        populateErrorPage(list);
     }
 
     return list[0];
@@ -181,8 +180,6 @@ App.populator('articleList', function (page, feed) {
         kikbutton.text('Kik');
 
         var passingData = {'object': item, 'list': 'nfl'};
-        //var object = passingData['item'];
-        //var list = passingData['list'];
 
         button.clickable().on('click', function() {
           cards.browser.open(artLink);
@@ -314,32 +311,13 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-  function populateErrorPage(sportList) {
-
-    var section = $('<div />').addClass('app-section');
-    var description = $('<div />').addClass('description');
-    var title = $('<h4 />');
-    var button = $('<div />').addClass('app-button myButtons');
-    var kikbutton = $('<div />').addClass('app-button myButtons');
-    var sadImage = $('<img src = "http://techmore.info/wp-content/uploads/2012/09/Sad-Smiley-Face-Clip-Art-Techmore.info-12.png" height = "200" width = "200" />');
-  
-    sportList.append(section);
-    section.append(description);
-    description.append(title);
-    section.append(sadImage);
-    
-    title.text('No More Feeds!');
-    description.text('Sorry! There are no more Feeds available at the moment, please check back later!');
-    
-    sportList.css('height','100%');
-
-    sportList.scrollable();
-
-  }
-
   slideviewer.on('flip', changeMainTitle);
 
   function changeMainTitle(slideNum) {
+
+    if(App.platform == 'android' && slideviewer) {
+      slideviewer.disable3d();
+    }
 
     if(slideNum == 0) {
       $(page).find('#sportTitle').text('BenchWarmers: NBA');
@@ -352,10 +330,6 @@ App.populator('articleList', function (page, feed) {
     }
     else if(slideNum == 3) {
       $(page).find('#sportTitle').text('BenchWarmers: NHL');
-    }
-
-    else if(slideNum == 4) {
-      $(page).find('#sportTitle').text('No More Feeds!');
     }
   }
 });
