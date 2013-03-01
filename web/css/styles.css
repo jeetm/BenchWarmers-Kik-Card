@@ -24,6 +24,7 @@
 	width: 150px;
 	height: 50px;
 	display: inline-block;
+	border-radius: 2px;
 }
 
 .app-android .app-topbar .app-button.left {
@@ -103,6 +104,7 @@
 	border-top: 1px solid #6b727c;
 	border: 1px solid black;
 	border-bottom: 1px solid #575f6a;
+	border-radius: 2px;
 	position: relative;
 	width: 40px;	
 }
