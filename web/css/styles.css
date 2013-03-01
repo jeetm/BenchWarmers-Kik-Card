@@ -24,6 +24,7 @@
 	width: 150px;
 	height: 50px;
 	display: inline-block;
+	border-radius: 2px;
 }
 
 .app-android .app-topbar .app-button.left {
@@ -74,4 +75,44 @@
 }
 .wrapper {
 	height: 100%;
+	overflow: hidden;
+}
+
+#sadface {
+	width: 200px;
+	height: 200px;
+}
+
+#sportSelect {
+	text-align: center;
+	width: 40px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.loader{
+	height: 100%;
+	background-image: url('../img/spinnerLarge.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.sport {
+	display: block;
+	float: none;
+	background-color: #454545; 
+	border-top: 1px solid #6b727c;
+	border: 1px solid black;
+	border-bottom: 1px solid #575f6a;
+	border-radius: 2px;
+	position: relative;
+	width: 40px;	
+}
+
+.sport:hover {
+	background: #4b545f;
+}
+
+.hide {
+	display: none;
 }

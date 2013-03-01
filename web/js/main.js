@@ -24,6 +24,7 @@ App.populator('articleList', function (page, feed) {
   changeMainTitle(feedNum);
 
   var wrapper = page.querySelector('.wrapper');
+  wrapper.innerHTML='';
 
   var slideviewer = new SlideViewer(wrapper, source, {
     startAt: feedNum,
@@ -34,38 +35,100 @@ App.populator('articleList', function (page, feed) {
     slideviewer.refreshSize();
   });
 
+  if(App.platform == 'android') {
+    slideviewer.disable3d();
+    slideviewer.on('move', function() {
+      slideviewer.enable3d();
+    });
+  }
+
   function source(i) {
-    var list = $('<div />');
+    var list = $('<div />').css("height", "100%");
+    var loadingSpinner = $('<div />').addClass('loader');
+    list.append(loadingSpinner);
     if (i === 0) {
       MyAPI.getArticles(function (meta,articles) {
-        populateNBAList(articles, list);
+        populateNBAList(articles, list, loadingSpinner);
       });
     }
     else if(i === 1) {
       MyAPI.getInfo(function (meta,articles) {
-        populateNFLList(articles, list);
+        populateNFLList(articles, list, loadingSpinner);
       });
     }
 
     else if(i === 2) {
       MyAPI.getMLB(function (meta,articles) {
-        populateMLBList(articles, list);
+        populateMLBList(articles, list, loadingSpinner);
       });
     }
 
     else if(i === 3) {
       MyAPI.getNhl(function (meta,articles) {
-        populateNHLList(articles, list);
+        populateNHLList(articles, list, loadingSpinner);
       });
     }
 
     return list[0];
   }
 
-  function populateNBAList(data, sportList) {
+  var sportButton = $(page).find('#sportSelect');
+  var categories = $(page).find('.sport');
+  var nbaBut = $(page).find('#nba').clickable();
+  var nflBut = $(page).find('#nfl').clickable();
+  var nhlBut = $(page).find('#nhl').clickable();
+  var mlbBut = $(page).find('#mlb').clickable();
 
+  categories.addClass('hide');
+  sportButton.on('click', function() {
+    categories.toggleClass('hide');
+  });
+
+  nbaBut.on('click', function() {
+    var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NBA') {
+      slideviewer.setPage(0);
+    }
+    categories.toggleClass('hide');
+  });
+
+  nhlBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NHL') {
+    slideviewer.setPage(3);
+    }
+    categories.toggleClass('hide');
+  });
+
+  nflBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NFL') {
+    slideviewer.setPage(1);
+    }
+    categories.toggleClass('hide');
+  });
+
+  mlbBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'MLB') {
+    slideviewer.setPage(2);
+    }
+    categories.toggleClass('hide');
+  });
+
+  function populateNBAList(data, sportList, spinner) {
+    var i = 0;
+    spinner.remove();
     data.forEach(function (item) {
 
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -117,9 +180,14 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-  function populateNFLList(data, sportList) {
+  function populateNFLList(data, sportList, spinner) {
+    var i = 0;
+    spinner.remove();   
     data.forEach(function (item) {
-
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -145,8 +213,6 @@ App.populator('articleList', function (page, feed) {
         kikbutton.text('Kik');
 
         var passingData = {'object': item, 'list': 'nfl'};
-        //var object = passingData['item'];
-        //var list = passingData['list'];
 
         button.clickable().on('click', function() {
           cards.browser.open(artLink);
@@ -169,10 +235,15 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-  function populateMLBList(data, sportList) {
-
+  function populateMLBList(data, sportList, spinner) {
+    var i = 0;
+    spinner.remove();
     data.forEach(function (item) {
 
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -223,9 +294,15 @@ App.populator('articleList', function (page, feed) {
 
       });
   }
-  function populateNHLList(data, sportList) {
-
+  function populateNHLList(data, sportList, spinner) {
+    var i = 0;
+    spinner.remove();
     data.forEach(function (item) {
+
+        i++;
+        if (i >= 16) {
+          return;
+        }
 
         var artTitle = item['title'];
         var artSum = item['summary'];
@@ -278,10 +355,13 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-
   slideviewer.on('flip', changeMainTitle);
 
   function changeMainTitle(slideNum) {
+
+    if(App.platform == 'android' && slideviewer) {
+      slideviewer.disable3d();
+    }
 
     if(slideNum == 0) {
       $(page).find('#sportTitle').text('BenchWarmers: NBA');
@@ -340,4 +420,3 @@ if (cards.browser && cards.browser.linkData) {
 else {
   App.load('articleList', 'nba');
 }
-//asdasdasdasdIdeas: Setting max number of stories and dealing with old content messages, displaying time/date of article/source, styling
