@@ -70,6 +70,34 @@ App.populator('articleList', function (page, feed) {
     return list[0];
   }
 
+  var sportButton = $(page).find('#sportSelect');
+  var categories = $(page).find('.sport');
+  var nbaBut = $(page).find('#nba').clickable();
+  var nflBut = $(page).find('#nfl').clickable();
+  var nhlBut = $(page).find('#nhl').clickable();
+  var mlbBut = $(page).find('#mlb').clickable();
+
+  categories.addClass('hide');
+  sportButton.on('click', function() {
+    categories.toggleClass('hide');
+  });
+
+  nbaBut.on('click', function() {
+    App.load('articleList', {'list': 'nba'});
+  });
+
+  nhlBut.on('click', function() {
+    App.load('articleList', {'list': 'nhl'});
+  });
+
+  nflBut.on('click', function() {
+    App.load('articleList', {'list': 'nfl'});
+  });
+
+  mlbBut.on('click', function() {
+    App.load('articleList', {'list': 'mlb'});
+  });
+
   function populateNBAList(data, sportList) {
 
     data.forEach(function (item) {
@@ -374,4 +402,3 @@ if (cards.browser && cards.browser.linkData) {
 else {
   App.load('articleList', 'nba');
 }
-//Setting max number of stories and dealing with old content messages, displaying time/date of article/source, styling
