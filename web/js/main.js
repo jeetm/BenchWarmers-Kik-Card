@@ -123,10 +123,15 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
   function populateNBAList(data, sportList, spinner) {
     var i = 0;
     spinner.remove();
+
+    sportList.css('height','100%');
+
+    sportList.scrollable();
+
     data.forEach(function (item) {
 
         i++;
-        if (i >= 16) {
+        if (i >= 10) {
           return;
         }
         var artTitle = item['title'];
@@ -142,7 +147,6 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var button = $('<div />').addClass('app-button myButtons');
         var kikbutton = $('<div />').addClass('app-button myButtons');
 
-        sportList.append(section);
         section.append(description);
         section.append(button);
         section.append(kikbutton);
@@ -173,19 +177,22 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
 
         });
 
-      sportList.css('height','100%');
-
-      sportList.scrollable();
+        sportList.append(section);
 
       });
   }
 
   function populateNFLList(data, sportList, spinner) {
     var i = 0;
-    spinner.remove();   
+    spinner.remove();
+
+    sportList.css('height','100%');
+
+    sportList.scrollable();
+
     data.forEach(function (item) {
         i++;
-        if (i >= 16) {
+        if (i >= 10) {
           return;
         }
         var artTitle = item['title'];
@@ -201,7 +208,6 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var button = $('<div />').addClass('app-button myButtons');
         var kikbutton = $('<div />').addClass('app-button myButtons');
 
-        sportList.append(section);
         section.append(description);
         section.append(button);
         section.append(kikbutton);
@@ -229,19 +235,23 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
           });
 
         });
-      sportList.css('height','100%');
 
-      sportList.scrollable();
+        sportList.append(section);
       });
   }
 
   function populateMLBList(data, sportList, spinner) {
     var i = 0;
     spinner.remove();
+
+    sportList.css('height','100%');
+
+    sportList.scrollable();
+
     data.forEach(function (item) {
 
         i++;
-        if (i >= 16) {
+        if (i >= 10) {
           return;
         }
         var artTitle = item['title'];
@@ -257,7 +267,6 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var button = $('<div />').addClass('app-button myButtons');
         var kikbutton = $('<div />').addClass('app-button myButtons');
 
-        sportList.append(section);
         section.append(description);
         section.append(button);
         section.append(kikbutton);
@@ -288,19 +297,21 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
 
         });
 
-      sportList.css('height','100%');
-
-      sportList.scrollable();
-
+        sportList.append(section);
       });
   }
   function populateNHLList(data, sportList, spinner) {
     var i = 0;
     spinner.remove();
+
+    sportList.css('height','100%');
+
+    sportList.scrollable();
+
     data.forEach(function (item) {
 
         i++;
-        if (i >= 16) {
+        if (i >= 10) {
           return;
         }
 
@@ -317,7 +328,6 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var button = $('<div />').addClass('app-button myButtons');
         var kikbutton = $('<div />').addClass('app-button myButtons');
 
-        sportList.append(section);
         section.append(description);
         section.append(button);
         section.append(kikbutton);
@@ -348,10 +358,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
 
         });
 
-      sportList.css('height','100%');
-
-      sportList.scrollable();
-
+        sportList.append(section);
       });
   }
 
