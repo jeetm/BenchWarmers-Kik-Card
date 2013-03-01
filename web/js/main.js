@@ -85,20 +85,39 @@ App.populator('articleList', function (page, feed) {
   });
 
   nbaBut.on('click', function() {
-    // var text = $(page).find('#articleTitle').text();
-    slideviewer.setPage(0);
+    var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NBA') {
+      slideviewer.setPage(0);
+    }
+    categories.toggleClass('hide');
   });
 
   nhlBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NHL') {
     slideviewer.setPage(3);
+    }
+    categories.toggleClass('hide');
   });
 
   nflBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'NFL') {
     slideviewer.setPage(1);
+    }
+    categories.toggleClass('hide');
   });
 
   mlbBut.on('click', function() {
+var text = $(page).find('#sportTitle').text().slice(13,17);
+    console.log(text);
+    if (text != 'MLB') {
     slideviewer.setPage(2);
+    }
+    categories.toggleClass('hide');
   });
 
   function populateNBAList(data, sportList, spinner) {
@@ -284,7 +303,7 @@ App.populator('articleList', function (page, feed) {
         if (i >= 16) {
           return;
         }
-        
+
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
