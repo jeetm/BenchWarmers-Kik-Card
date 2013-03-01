@@ -85,25 +85,31 @@ App.populator('articleList', function (page, feed) {
   });
 
   nbaBut.on('click', function() {
-    App.load('articleList', {'list': 'nba'});
+    // var text = $(page).find('#articleTitle').text();
+    slideviewer.setPage(0);
   });
 
   nhlBut.on('click', function() {
-    App.load('articleList', {'list': 'nhl'});
+    slideviewer.setPage(3);
   });
 
   nflBut.on('click', function() {
-    App.load('articleList', {'list': 'nfl'});
+    slideviewer.setPage(1);
   });
 
   mlbBut.on('click', function() {
-    App.load('articleList', {'list': 'mlb'});
+    slideviewer.setPage(2);
   });
 
   function populateNBAList(data, sportList, spinner) {
+    var i = 0;
     spinner.remove();
     data.forEach(function (item) {
 
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -156,9 +162,13 @@ App.populator('articleList', function (page, feed) {
   }
 
   function populateNFLList(data, sportList, spinner) {
+    var i = 0;
     spinner.remove();   
     data.forEach(function (item) {
-
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -207,9 +217,14 @@ App.populator('articleList', function (page, feed) {
   }
 
   function populateMLBList(data, sportList, spinner) {
+    var i = 0;
     spinner.remove();
     data.forEach(function (item) {
 
+        i++;
+        if (i >= 16) {
+          return;
+        }
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
@@ -261,9 +276,15 @@ App.populator('articleList', function (page, feed) {
       });
   }
   function populateNHLList(data, sportList, spinner) {
+    var i = 0;
     spinner.remove();
     data.forEach(function (item) {
 
+        i++;
+        if (i >= 16) {
+          return;
+        }
+        
         var artTitle = item['title'];
         var artSum = item['summary'];
         var artDate = item['pubDate'];
