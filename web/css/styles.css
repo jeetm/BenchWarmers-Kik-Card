@@ -88,6 +88,13 @@
 	padding-right: 4px;
 }
 
+.loader{
+	height: 100%;
+	background-image: url('../img/spinnerLarge.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 .sport {
 	display: block;
 	float: none;

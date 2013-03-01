@@ -24,6 +24,7 @@ App.populator('articleList', function (page, feed) {
   changeMainTitle(feedNum);
 
   var wrapper = page.querySelector('.wrapper');
+  wrapper.innerHTML='';
 
   var slideviewer = new SlideViewer(wrapper, source, {
     startAt: feedNum,
@@ -42,27 +43,29 @@ App.populator('articleList', function (page, feed) {
   }
 
   function source(i) {
-    var list = $('<div />');
+    var list = $('<div />').css("height", "100%");
+    var loadingSpinner = $('<div />').addClass('loader');
+    list.append(loadingSpinner);
     if (i === 0) {
       MyAPI.getArticles(function (meta,articles) {
-        populateNBAList(articles, list);
+        populateNBAList(articles, list, loadingSpinner);
       });
     }
     else if(i === 1) {
       MyAPI.getInfo(function (meta,articles) {
-        populateNFLList(articles, list);
+        populateNFLList(articles, list, loadingSpinner);
       });
     }
 
     else if(i === 2) {
       MyAPI.getMLB(function (meta,articles) {
-        populateMLBList(articles, list);
+        populateMLBList(articles, list, loadingSpinner);
       });
     }
 
     else if(i === 3) {
       MyAPI.getNhl(function (meta,articles) {
-        populateNHLList(articles, list);
+        populateNHLList(articles, list, loadingSpinner);
       });
     }
 
@@ -97,8 +100,8 @@ App.populator('articleList', function (page, feed) {
     App.load('articleList', {'list': 'mlb'});
   });
 
-  function populateNBAList(data, sportList) {
-
+  function populateNBAList(data, sportList, spinner) {
+    spinner.remove();
     data.forEach(function (item) {
 
         var artTitle = item['title'];
@@ -152,7 +155,8 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-  function populateNFLList(data, sportList) {
+  function populateNFLList(data, sportList, spinner) {
+    spinner.remove();   
     data.forEach(function (item) {
 
         var artTitle = item['title'];
@@ -202,8 +206,8 @@ App.populator('articleList', function (page, feed) {
       });
   }
 
-  function populateMLBList(data, sportList) {
-
+  function populateMLBList(data, sportList, spinner) {
+    spinner.remove();
     data.forEach(function (item) {
 
         var artTitle = item['title'];
@@ -256,8 +260,8 @@ App.populator('articleList', function (page, feed) {
 
       });
   }
-  function populateNHLList(data, sportList) {
-
+  function populateNHLList(data, sportList, spinner) {
+    spinner.remove();
     data.forEach(function (item) {
 
         var artTitle = item['title'];
