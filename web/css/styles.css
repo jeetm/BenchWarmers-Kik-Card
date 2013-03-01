@@ -75,3 +75,8 @@
 .wrapper {
 	height: 100%;
 }
+
+#sadface {
+	width: 200px;
+	height: 200px;
+}
