@@ -48,17 +48,17 @@ App.populator('articleList', function (page, feed) {
   });
 
   $(page).find('#nba').clickable().on('click', function() {
-    slideviewer.setPage(0); // TODO
+    slideviewer.setPage(FEED_NBA); // TODO
     categories.toggleClass('hide');
   });
 
   $(page).find('#nfl').clickable().on('click', function() {
-    slideviewer.setPage(1); // TODO
+    slideviewer.setPage(FEED_NFL); // TODO
     categories.toggleClass('hide');
   });
 
   $(page).find('#mlb').clickable().on('click', function() {
-    slideviewer.setPage(2); // TODO
+    slideviewer.setPage(FEED_MLB); // TODO
     categories.toggleClass('hide');
   });
 
