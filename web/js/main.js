@@ -1,25 +1,11 @@
+var FEED_NBA = 0;
+var FEED_NFL = 1;
+var FEED_MLB = 2;
+var FEED_NHL = 3;
+
 App.populator('articleList', function (page, feed) {
-  var feedNum;
-
-  if (feed['list'] === 'nba') {
-    feedNum = 0;
-  }
-
-  else if (feed['list'] === 'nfl') {
-    feedNum = 1;
-  }
-
-  else if (feed['list'] === 'mlb') {
-    feedNum = 2;
-  }
-
-  else if (feed['list'] === 'nhl') {
-    feedNum = 3;
-  }
-
-  else {
-    feedNum = 0;
-  }
+  
+  var feedNum = feed['list'];
 
   changeMainTitle(feedNum);
 
@@ -46,82 +32,44 @@ App.populator('articleList', function (page, feed) {
     var list = $('<div />').css("height", "100%");
     var loadingSpinner = $('<div />').addClass('loader');
     list.append(loadingSpinner);
-    if (i === 0) {
-      MyAPI.getArticles(function (meta,articles) {
-        populateNBAList(articles, list, loadingSpinner);
-      });
-    }
-    else if(i === 1) {
-      MyAPI.getInfo(function (meta,articles) {
-        populateNFLList(articles, list, loadingSpinner);
-      });
-    }
-
-    else if(i === 2) {
-      MyAPI.getMLB(function (meta,articles) {
-        populateMLBList(articles, list, loadingSpinner);
-      });
-    }
-
-    else if(i === 3) {
-      MyAPI.getNhl(function (meta,articles) {
-        populateNHLList(articles, list, loadingSpinner);
-      });
-    }
+    MyAPI.getArticles(i, function (meta,articles) {
+      populateList(articles, list, loadingSpinner, i);
+    }); 
 
     return list[0];
   }
 
   var sportButton = $(page).find('#sportSelect');
   var categories = $(page).find('.sport');
-  var nbaBut = $(page).find('#nba').clickable();
-  var nflBut = $(page).find('#nfl').clickable();
-  var nhlBut = $(page).find('#nhl').clickable();
-  var mlbBut = $(page).find('#mlb').clickable();
 
   categories.addClass('hide');
   sportButton.on('click', function() {
     categories.toggleClass('hide');
   });
 
-  nbaBut.on('click', function() {
-    var text = $(page).find('#sportTitle').text().slice(13,17);
-    console.log(text);
-    if (text != 'NBA') {
-      slideviewer.setPage(0);
-    }
+  $(page).find('#nba').clickable().on('click', function() {
+    slideviewer.setPage(0); // TODO
     categories.toggleClass('hide');
   });
 
-  nhlBut.on('click', function() {
-var text = $(page).find('#sportTitle').text().slice(13,17);
-    console.log(text);
-    if (text != 'NHL') {
-    slideviewer.setPage(3);
-    }
+  $(page).find('#nfl').clickable().on('click', function() {
+    slideviewer.setPage(1); // TODO
     categories.toggleClass('hide');
   });
 
-  nflBut.on('click', function() {
-var text = $(page).find('#sportTitle').text().slice(13,17);
-    console.log(text);
-    if (text != 'NFL') {
-    slideviewer.setPage(1);
-    }
+  $(page).find('#mlb').clickable().on('click', function() {
+    slideviewer.setPage(2); // TODO
     categories.toggleClass('hide');
   });
 
-  mlbBut.on('click', function() {
-var text = $(page).find('#sportTitle').text().slice(13,17);
-    console.log(text);
-    if (text != 'MLB') {
-    slideviewer.setPage(2);
-    }
+  $(page).find('#nhl').clickable().on('click', function() {
+    slideviewer.setPage(FEED_NHL);
     categories.toggleClass('hide');
   });
 
-  function populateNBAList(data, sportList, spinner) {
-    var i = 0;
+
+  function populateList(data, sportList, spinner, sport) {
+      var i = 0;
     spinner.remove();
 
     sportList.css('height','100%');
@@ -157,7 +105,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         button.text('Read More');
         kikbutton.text('Kik');
 
-        var passingData1 = {'object': item, 'list': 'nba'};
+        var passingData1 = {'object': item, 'list': sport};
         var object = passingData1['object'];
         var list = passingData1['list'];
 
@@ -179,187 +127,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
 
         sportList.append(section);
 
-      });
-  }
-
-  function populateNFLList(data, sportList, spinner) {
-    var i = 0;
-    spinner.remove();
-
-    sportList.css('height','100%');
-
-    sportList.scrollable();
-
-    data.forEach(function (item) {
-        i++;
-        if (i >= 10) {
-          return;
-        }
-        var artTitle = item['title'];
-        var artSum = item['summary'];
-        var artDate = item['pubDate'];
-        var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
-
-        var section = $('<div />').addClass('app-section');
-        var description = $('<div />').addClass('description');
-        var title = $('<h4 />');
-        var summary = $('<div />').html(artSum);
-        var button = $('<div />').addClass('app-button myButtons');
-        var kikbutton = $('<div />').addClass('app-button myButtons');
-
-        section.append(description);
-        section.append(button);
-        section.append(kikbutton);
-        description.append(title);
-        description.append(summary);
-        
-        title.text(artTitle);
-        button.text('Read More');
-        kikbutton.text('Kik');
-
-        var passingData = {'object': item, 'list': 'nfl'};
-
-        button.clickable().on('click', function() {
-          cards.browser.open(artLink);
-        });
-
-        kikbutton.clickable().on('click', function() {
-          var x = JSON.stringify(passingData);
-          cards.kik.send({
-            title: artTitle,
-            text: 'Check out what I found!',
-            pic: imgLink,
-            big: false,
-            linkData: x
-          });
-
-        });
-
-        sportList.append(section);
-      });
-  }
-
-  function populateMLBList(data, sportList, spinner) {
-    var i = 0;
-    spinner.remove();
-
-    sportList.css('height','100%');
-
-    sportList.scrollable();
-
-    data.forEach(function (item) {
-
-        i++;
-        if (i >= 10) {
-          return;
-        }
-        var artTitle = item['title'];
-        var artSum = item['summary'];
-        var artDate = item['pubDate'];
-        var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
-
-        var section = $('<div />').addClass('app-section');
-        var description = $('<div />').addClass('description');
-        var title = $('<h4 />');
-        var summary = $('<div />').html(artSum);
-        var button = $('<div />').addClass('app-button myButtons');
-        var kikbutton = $('<div />').addClass('app-button myButtons');
-
-        section.append(description);
-        section.append(button);
-        section.append(kikbutton);
-        description.append(title);
-        description.append(summary);
-        
-        title.text(artTitle);
-        button.text('Read More');
-        kikbutton.text('Kik');
-
-        var passingData2 = {'object': item, 'list': 'mlb'};
-        var object = passingData2['object'];
-        var list = passingData2['list'];
-
-        button.clickable().on('click', function() {
-          cards.browser.open(artLink);
-        });
-
-        kikbutton.clickable().on('click', function() {
-          var x = JSON.stringify(passingData2);
-          cards.kik.send({
-            title: artTitle,
-            text: 'Check out what I found!',
-            pic: imgLink,
-            big: false,
-            linkData: x
-          });
-
-        });
-
-        sportList.append(section);
-      });
-  }
-  function populateNHLList(data, sportList, spinner) {
-    var i = 0;
-    spinner.remove();
-
-    sportList.css('height','100%');
-
-    sportList.scrollable();
-
-    data.forEach(function (item) {
-
-        i++;
-        if (i >= 10) {
-          return;
-        }
-
-        var artTitle = item['title'];
-        var artSum = item['summary'];
-        var artDate = item['pubDate'];
-        var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
-
-        var section = $('<div />').addClass('app-section');
-        var description = $('<div />').addClass('description');
-        var title = $('<h4 />');
-        var summary = $('<div />').html(artSum);
-        var button = $('<div />').addClass('app-button myButtons');
-        var kikbutton = $('<div />').addClass('app-button myButtons');
-
-        section.append(description);
-        section.append(button);
-        section.append(kikbutton);
-        description.append(title);
-        description.append(summary);
-        
-        title.text(artTitle);
-        button.text('Read More');
-        kikbutton.text('Kik');
-
-        var passingData3 = {'object': item, 'list': 'nhl'};
-        var object = passingData3['object'];
-        var list = passingData3['list'];
-
-        button.clickable().on('click', function() {
-          cards.browser.open(artLink);
-        });
-
-        kikbutton.clickable().on('click', function() {
-          var x = JSON.stringify(passingData3);
-          cards.kik.send({
-            title: artTitle,
-            text: 'Check out what I found!',
-            pic: imgLink,
-            big: false,
-            linkData: x
-          });
-
-        });
-
-        sportList.append(section);
-      });
+      }); 
   }
 
   slideviewer.on('flip', changeMainTitle);
@@ -425,5 +193,5 @@ if (cards.browser && cards.browser.linkData) {
   App.load('articleView', cards.browser.linkData);
 }
 else {
-  App.load('articleList', 'nba');
+  App.load('articleList', FEED_NHL);
 }
