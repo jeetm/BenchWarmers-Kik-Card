@@ -121,6 +121,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
   });
 
   function populateNBAList(data, sportList, spinner) {
+    console.log(data);
     var i = 0;
     spinner.remove();
     data.forEach(function (item) {
@@ -133,7 +134,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
+        var imgLink = item['meta']['image']['url'];
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
@@ -192,7 +193,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
+        var imgLink = item['meta']['image']['url'];
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
@@ -248,7 +249,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
+        var imgLink = item['meta']['image']['url'];
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
@@ -308,7 +309,7 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
-        var imgLink = item['media:content']['@']['url'];
+        var imgLink = item['meta']['image']['url'];
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
@@ -391,7 +392,7 @@ App.populator('articleView', function(page, data) {
   });
 
   $(page).find('#kikBut').clickable().on('click', function() {
-    var imgLink = data['media:content']['@']['url'];
+    var imgLink = data['meta']['image']['url'];
     var artTitle = data['title'];
     var x = JSON.stringify(data);
     cards.kik.send({
@@ -405,7 +406,7 @@ App.populator('articleView', function(page, data) {
 
   var brief = $('<div />').html(object['description']);
   var summary = brief.text();
-  var imagesrc = brief.find('img').attr('src');
+  var imagesrc = object[meta][image][url];
   var image = $('<img />').attr('src', imagesrc);
   $(page).find('#artImage').html(image);
   $(page).find('#artBrief').text(summary);
