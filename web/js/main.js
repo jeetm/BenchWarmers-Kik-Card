@@ -193,5 +193,5 @@ if (cards.browser && cards.browser.linkData) {
   App.load('articleView', cards.browser.linkData);
 }
 else {
-  App.load('articleList', FEED_NHL);
+  App.load('articleList', {list: FEED_NBA});
 }
