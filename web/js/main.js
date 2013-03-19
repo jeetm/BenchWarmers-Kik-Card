@@ -134,18 +134,20 @@ var text = $(page).find('#sportTitle').text().slice(13,17);
         var artSum = item['summary'];
         var artDate = item['pubDate'];
         var artLink = item['link'];
-        var imgLink = item['meta']['image']['url'];
+        var imgLink = item['enclosure'].attr('ur');
 
         var section = $('<div />').addClass('app-section');
         var description = $('<div />').addClass('description');
         var title = $('<h4 />');
-        var summary = $('<div />').html(artSum);
+        var summary = $('<div />').text(artSum);
         var button = $('<div />').addClass('app-button myButtons');
+        var image = $('<img />').attr('src', imgLink);
         var kikbutton = $('<div />').addClass('app-button myButtons');
 
         sportList.append(section);
         section.append(description);
         section.append(button);
+        section.append(image);
         section.append(kikbutton);
         description.append(title);
         description.append(summary);
