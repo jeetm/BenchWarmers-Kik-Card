@@ -5,7 +5,7 @@ exports.getArticles = function (callback) {
 };
 
 exports.getInfo = function (callback) {
-	feedparser.parseUrl('http://www.skysports.com/rss/0,20514,12375,00.xml').on('complete', callback);
+	feedparser.parseUrl('http://www.skysports.com/rss/0,20514,12118,00.xml').on('complete', callback);
 };
 
 exports.getMLB = function (callback) {
