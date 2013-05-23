@@ -1,6 +1,21 @@
-<b><h1>BenchWarmers</b></h1>
+BenchWarmers
+The font in github does not seem to work for this repository, it fails to recognize HTML markup, so this readme is bound to look poor (in terms of text and styling, sorry!)
 Type in card://benchwarmers.herokuapp.com in one of your conversations within the Kik app, and then tap on the link to open the card in your sidebar!
-<b><h3>Description</b></h3>
+
+Description
 This was a web-based app made on the <a href = "http://code.kik.com/app/">Kik Cards</a> platform while I was working at <a href = "http://kik.com">Kik Interactive</a> (creators of Kik Messenger). They have all rights reserved in terms of the platform, all the libraries which I used (such as app.js, zerver etc) and anything related to Kik Interactive / Kik Messenger that this Card was created on, and I don't claim any of it to be mine. The card itself however, I did create, along with help from our friendly Web Development team.
 
+Implementation
+Basically, the card imports stories from <a href = "http://www.skysports.com/rss_home">Sky Sports</a> rss feeds, and re-organizes and displays them to the user in a user-friendly manner. The user can then select the "Read More" option, where after tapping the Read More button they would immediately be taken to the default phone browser to open the actual story link. Similarly, the story can be "Kiked" or sent to another user via the "Send to List", through which the user can send a particular sport story to a new or an existing conversation. 
+
+There are several issues which currently exist, which I intend to fix. My laptop fails to push to github or to heroku, so I need to sort that out so I can push committed changes. All these issues have been fixed, but I can't push from my laptop anymore, which definitely needs to be fixed.
+
+1) All sports render the basketball news feed. Regardless of which sport you select, only the basketball feed is shown.
+
+2) Tapping on a story that was sent to you via a conversation takes the user to a blank screen. This issue occured because of a re-vamp of the code, but halfway through the restructuring, the git issue occured. 
+
+3) Some minor styling issues
+
+Experience
+Creating this card as a part of a QA Hack Week as a phenonmenal experience, one in which I have learnt immensely about the web, and programming in general. This was my first "real" complete project, and I am very thankful to everyone at Kik for giving me this opportunity during my 4 month internship. I encourage everyone to start developing their own web Cards once Kik releases their platform, it really is a perfect way to share content. As always, I am constantly looking for ways to improve, so send a pull request/comment/email for any improvements and/or constructive criticism.
 
