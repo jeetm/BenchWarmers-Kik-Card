@@ -1,1 +1,6 @@
-sample comment
+<b><h1>BenchWarmers</b></h1>
+Type in card://benchwarmers.herokuapp.com in one of your conversations within the Kik app, and then tap on the link to open the card in your sidebar!
+<b><h3>Description</b></h3>
+This was a web-based app made on the <a href = "http://code.kik.com/app/">Kik Cards</a> platform while I was working at <a href = "http://kik.com">Kik Interactive</a> (creators of Kik Messenger). They have all rights reserved in terms of the platform, all the libraries which I used (such as app.js, zerver etc) and anything related to Kik Interactive / Kik Messenger that this Card was created on, and I don't claim any of it to be mine. The card itself however, I did create, along with help from our friendly Web Development team.
+
+
