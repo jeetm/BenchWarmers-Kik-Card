@@ -17,7 +17,7 @@ There are several issues which currently exist, which I intend to fix. My laptop
 
 2) Tapping on a story that was sent to you via a conversation takes the user to a blank screen. This issue occured because of a re-vamp of the code, but halfway through the restructuring, the git issue occured. 
 
-3) Some minor styling issues
+3) Some minor styling issues.
 
 Experience
 Creating this card as a part of a QA Hack Week as a phenonmenal experience, one in which I have learnt immensely about the web, and programming in general. This was my first "real" complete project, and I am very thankful to everyone at Kik for giving me this opportunity during my 4 month internship. I encourage everyone to start developing their own web Cards once Kik releases their platform, it really is a perfect way to share content. As always, I am constantly looking for ways to improve, so send a pull request/comment/email for any improvements and/or constructive criticism.
