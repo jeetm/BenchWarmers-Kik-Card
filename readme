@@ -5,7 +5,7 @@ The font in github does not seem to work for this repository, it fails to recogn
 
 Type in card://benchwarmers.herokuapp.com in one of your conversations within the Kik app, and then tap on the link to open the card in your sidebar!
 
-Description
+Description.
 This was a web-based app made on the Kik Cards (http://code.kik.com/app/) platform while I was working at Kik Interactive (creators of Kik Messenger - http://kik.com). They have all rights reserved in terms of the platform, all the libraries which I used (such as app.js, zerver etc) and anything related to Kik Interactive / Kik Messenger that this Card was created on, and I don't claim any of it to be mine. The card itself however, I did create, along with help from our friendly Web Development team.
 
 Implementation
