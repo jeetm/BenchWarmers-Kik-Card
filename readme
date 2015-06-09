@@ -5,7 +5,8 @@ The font in github does not seem to work for this repository, it fails to recogn
 
 Type in card://benchwarmers.herokuapp.com in one of your conversations within the Kik app, and then tap on the link to open the card in your sidebar!
 
-Description.
+Description
+
 This was a web-based app made on the Kik Cards (http://code.kik.com/app/) platform while I was working at Kik Interactive (creators of Kik Messenger - http://kik.com). They have all rights reserved in terms of the platform, all the libraries which I used (such as app.js, zerver etc) and anything related to Kik Interactive / Kik Messenger that this Card was created on, and I don't claim any of it to be mine. The card itself however, I did create, along with help from our friendly Web Development team.
 
 Implementation
@@ -17,7 +18,11 @@ There are several issues which currently exist, which I intend to fix. My laptop
 
 2) Tapping on a story that was sent to you via a conversation takes the user to a blank screen. This issue occured because of a re-vamp of the code, but halfway through the restructuring, the git issue occured. 
 
+<<<<<<< HEAD
 3) Some minor styling issues.
+=======
+3) Some minor styling issues
+>>>>>>> b7cc815f7c68cafdc2b2c45739bce0da0bbb72a0
 
 Experience
 Creating this card as a part of a QA Hack Week as a phenonmenal experience, one in which I have learnt immensely about the web, and programming in general. This was my first "real" complete project, and I am very thankful to everyone at Kik for giving me this opportunity during my 4 month internship. I encourage everyone to start developing their own web Cards once Kik releases their platform, it really is a perfect way to share content. As always, I am constantly looking for ways to improve, so send a pull request/comment/email for any improvements and/or constructive criticism.
